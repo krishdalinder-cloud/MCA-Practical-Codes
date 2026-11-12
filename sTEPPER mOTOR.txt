@@ -1,0 +1,41 @@
+#include <reg51.h>
+
+#define MOTOR P2
+
+void delay()
+{
+    unsigned int i;
+    for(i = 0; i < 1000; i++);
+}
+
+void main()
+{
+    unsigned int i;
+
+    while(1)
+    {
+       
+        for(i = 0; i < 50; i++)
+        {
+            MOTOR = 0x09; delay();
+            MOTOR = 0x0C; delay();
+            MOTOR = 0x06; delay();
+            MOTOR = 0x03; delay();
+        }
+
+        MOTOR = 0x00;
+        delay();
+
+        
+        for(i = 0; i < 50; i++)
+        {
+            MOTOR = 0x03; delay();
+            MOTOR = 0x06; delay();
+            MOTOR = 0x0C; delay();
+            MOTOR = 0x09; delay();
+        }
+
+        MOTOR = 0x00;
+        delay();
+    }
+}

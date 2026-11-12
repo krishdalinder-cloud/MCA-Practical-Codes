@@ -1,0 +1,72 @@
+#include <reg51.h>
+
+/* RGB LED connections */
+sbit RED = P2^0;
+sbit GREEN = P2^1;
+sbit BLUE = P2^2;
+
+/* Delay function */
+void delay(unsigned int time)
+{
+    unsigned int i, j;
+
+    for(i = 0; i < time; i++)
+    {
+        for(j = 0; j < 1275; j++);
+    }
+}
+
+/* Main program */
+void main(void)
+{
+    while(1)
+    {
+        /* Red */
+        RED = 1;
+        GREEN = 0;
+        BLUE = 0;
+        delay(1000);
+
+        /* Green */
+        RED = 0;
+        GREEN = 1;
+        BLUE = 0;
+        delay(1000);
+
+        /* Blue */
+        RED = 0;
+        GREEN = 0;
+        BLUE = 1;
+        delay(1000);
+
+        /* Yellow = Red + Green */
+        RED = 1;
+        GREEN = 1;
+        BLUE = 0;
+        delay(1000);
+
+        /* Magenta = Red + Blue */
+        RED = 1;
+        GREEN = 0;
+        BLUE = 1;
+        delay(1000);
+
+        /* Cyan = Green + Blue */
+        RED = 0;
+        GREEN = 1;
+        BLUE = 1;
+        delay(1000);
+
+        /* White = Red + Green + Blue */
+        RED = 1;
+        GREEN = 1;
+        BLUE = 1;
+        delay(1000);
+
+        /* All LEDs OFF */
+        RED = 0;
+        GREEN = 0;
+        BLUE = 0;
+        delay(1000);
+    }
+}
